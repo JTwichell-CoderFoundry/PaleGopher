@@ -1,8 +1,15 @@
 $(function () {
-    $("head").append('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js"></script>');
+    AppendFPScript();
     SetFingerprintCookie();   
     SubmitBrowserDataToAPI();   
 });
+
+function AppendFPScript() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js";
+    $("head").append(s);
+}
 
 function WriteCookie(name, value, days) {
     var date, expires;
