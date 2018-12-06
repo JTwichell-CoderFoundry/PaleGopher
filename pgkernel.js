@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js"></script>"   
+
 $(function () {
     SetFingerprintCookie();   
     SubmitBrowserDataToAPI();   
