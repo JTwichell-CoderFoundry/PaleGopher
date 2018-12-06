@@ -1,10 +1,9 @@
-//<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js"></script>
-
 $(function () {
-    $("body").append('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js"></script>');
+    $("head").append('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js"></script>');
     SetFingerprintCookie();   
     SubmitBrowserDataToAPI();   
 });
+
 function WriteCookie(name, value, days) {
     var date, expires;
     if (days) {
