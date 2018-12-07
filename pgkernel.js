@@ -1,15 +1,16 @@
 $(function () {
-    AppendFPScript();
+    //AppendFPScript();
+    const Fingerprint2 = require("fingerprintjs2");
     SetFingerprintCookie();   
     SubmitBrowserDataToAPI();   
 });
 
-function AppendFPScript() {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js";
-    $("head").append(s);
-}
+//function AppendFPScript() {
+//    var s = document.createElement("script");
+//    s.type = "text/javascript";
+//    s.src = "https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js";
+//    $("head").append(s);
+//}
 
 function WriteCookie(name, value, days) {
     var date, expires;
