@@ -6,7 +6,8 @@ function AppendFPScript() {
     document.head.appendChild(script);
 }
 
-$(function () {     
+$(document).ready(function () { 
+    
     SetFingerprintCookie();   
     SubmitBrowserDataToAPI();   
 
