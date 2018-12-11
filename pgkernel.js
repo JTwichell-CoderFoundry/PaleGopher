@@ -1,9 +1,22 @@
-LoadFingerPrintJS();
-$(document).ready(function () {    
-    SetFingerprintCookie();
-    SubmitBrowserDataToAPI();
+$(document).ready(function () {  
+    LoadRequiredScripts("https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js", KickOffFingerPrinting());   
 });
 
+function LoadRequiredScripts(url, callback) {
+    var head = document.head;
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    script.onreadystatechange = callback;
+    script.onload = callback;
+  
+    head.appendChild(script);
+}
+function KickOffFingerPrinting() {
+    SetFingerprintCookie();
+    SubmitBrowserDataToAPI();
+}
 function LoadFingerPrintJS() {   
     var jQueryScript = document.createElement('script');
     jQueryScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js');
