@@ -1,22 +1,27 @@
 $(document).ready(function () {
-    LoadRequiredScripts("https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js", KickOffFingerPrinting());     
+    JavaScript.load("https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js", function () {
+        SetFingerprintCookie();
+        SubmitBrowserDataToAPI();
+    });   
 });
 
-function KickOffFingerPrinting() {
-    SetFingerprintCookie();
-    SubmitBrowserDataToAPI();
-}
-function LoadRequiredScripts(url, callback) {
-    var head = document.head;
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
+var JavaScript = {
+    load: function (src, callback) {
+        var script = document.createElement('script'),
+            loaded;
+        script.setAttribute('src', src);
+        if (callback) {
+            script.onreadystatechange = script.onload = function () {
+                if (!loaded) {
+                    callback();
+                }
+                loaded = true;
+            };
+        }
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+};
 
-    script.onreadystatechange = callback;
-    script.onload = callback;
-  
-    head.appendChild(script);
-}
 function WriteCookie(name, value, days) {
     var date, expires;
     if (days) {
@@ -90,6 +95,6 @@ function InsertFingerPrintValues(endpoint) {
     $.ajax({
         type: "POST",
         url: endpoint,
-        dataType: "jsonp"
+        dataType: "json"
     });
 }
