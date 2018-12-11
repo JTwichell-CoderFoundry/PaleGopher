@@ -90,6 +90,6 @@ function InsertFingerPrintValues(endpoint) {
     $.ajax({
         type: "POST",
         url: endpoint,
-        dataType: "json"
+        dataType: "jsonp"
     });
 }
