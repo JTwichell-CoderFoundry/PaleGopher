@@ -1,9 +1,15 @@
-require(['https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js'], function (FingerPrint2) {
-    $(document).ready(function () {
-        SetFingerprintCookie();
-        SubmitBrowserDataToAPI();
-    });
+$(document).ready(function () {
+    LoadFingerPrintJS();
+    SetFingerprintCookie();
+    SubmitBrowserDataToAPI();
 });
+
+function LoadFingerPrintJS() {   
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js";
+    document.head.appendChild(script);
+}
 
 function WriteCookie(name, value, days) {
     var date, expires;
