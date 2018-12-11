@@ -47,7 +47,7 @@ function SetFingerprintCookie() {
         requestIdleCallback(function () {
             Fingerprint2.get(function (components) {
                 var values = components.map(function (mycomponent) { return mycomponent.value; });
-                fp = Fingerprint2.x64hash128(values.join(''), 31);
+                var fp = Fingerprint2.x64hash128(values.join(''), 31);
                 WriteCookie('FingerPrint', fp, 30);
             });
         });
@@ -55,7 +55,7 @@ function SetFingerprintCookie() {
         setTimeout(function () {
             Fingerprint2.get(function (components) {
                 var values = components.map(function (mycomponent) { return mycomponent.value; });
-                fp = Fingerprint2.x64hash128(values.join(''), 31);
+                var fp = Fingerprint2.x64hash128(values.join(''), 31);
                 WriteCookie('FingerPrint', fp, 30);
             });
         }, 500);
