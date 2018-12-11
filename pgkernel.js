@@ -1,4 +1,4 @@
-const Fingerrint2 = require("https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js");
+require(['https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js'], function (FingerPrint2) {
 
 $(document).ready(function () {   
     SetFingerprintCookie();
@@ -70,10 +70,9 @@ function ComposeEndpoint(key, value) {
     return baseUrl.concat("?fingerPrint=", ReadCookie("FingerPrint"), "&key=", key, "&value=", value);
 }
 function InsertFingerPrintValues(endpoint) {
-    $.ajax({
-        type: "POST",
-        url: endpoint,
-        dataType: "json"
-    });
-}
-
+        $.ajax({
+            type: "POST",
+            url: endpoint,
+            dataType: "json"
+        });
+    }
