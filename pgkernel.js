@@ -43,12 +43,23 @@ function ReadCookie(name) {
     return '';
 }
 function SetFingerprintCookie() {
-    var fp = "";
-    Fingerprint2.get(function (components) {
-        var values = components.map(function (mycomponent) { return mycomponent.value; });
-        fp = Fingerprint2.x64hash128(values.join(''), 31);
-        WriteCookie('FingerPrint', fp, 30);
-    });
+    if (window.requestIdleCallback) {
+        requestIdleCallback(function () {
+            Fingerprint2.get(function (components) {
+                var values = components.map(function (mycomponent) { return mycomponent.value; });
+                fp = Fingerprint2.x64hash128(values.join(''), 31);
+                WriteCookie('FingerPrint', fp, 30);
+            });
+        });
+    } else {
+        setTimeout(function () {
+            Fingerprint2.get(function (components) {
+                var values = components.map(function (mycomponent) { return mycomponent.value; });
+                fp = Fingerprint2.x64hash128(values.join(''), 31);
+                WriteCookie('FingerPrint', fp, 30);
+            });
+        }, 500);
+    }
 }
 function SubmitBrowserDataToAPI() {
     if (window.requestIdleCallback) {
