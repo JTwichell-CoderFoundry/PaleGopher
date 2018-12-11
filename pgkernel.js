@@ -93,7 +93,7 @@ function ComposeEndpoint(key, value) {
 }
 function InsertFingerPrintValues(endpoint) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: endpoint,
         dataType: "json"
     });
