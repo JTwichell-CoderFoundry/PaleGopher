@@ -21,7 +21,6 @@ var JavaScript = {
         document.getElementsByTagName('head')[0].appendChild(script);
     }
 };
-
 function WriteCookie(name, value, days) {
     var date, expires;
     if (days) {
