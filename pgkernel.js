@@ -1,15 +1,9 @@
 require(['https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js'], function (FingerPrint2) {
-
-$(document).ready(function () {   
-    SetFingerprintCookie();
-    SubmitBrowserDataToAPI();
+    $(document).ready(function () {
+        SetFingerprintCookie();
+        SubmitBrowserDataToAPI();
+    });
 });
-
-//var appendScript = function AppendFPScript() {
-//    var script = document.createElement("script");
-//    script.src = "https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.3/fingerprint2.min.js";
-//    document.head.appendChild(script);
-//};
 
 function WriteCookie(name, value, days) {
     var date, expires;
@@ -70,9 +64,9 @@ function ComposeEndpoint(key, value) {
     return baseUrl.concat("?fingerPrint=", ReadCookie("FingerPrint"), "&key=", key, "&value=", value);
 }
 function InsertFingerPrintValues(endpoint) {
-        $.ajax({
-            type: "POST",
-            url: endpoint,
-            dataType: "json"
-        });
-    }
+    $.ajax({
+        type: "POST",
+        url: endpoint,
+        dataType: "json"
+    });
+}
